@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="container">
+    <form action="/addPost" method="post">
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" placeholder="제목을 입력하시오">
+        </div>
+        <div class="form-group">
+            <label for="detail">내용</label>
+            <input type="text" id="detail" name="detail" placeholder="내용을 입력하시오">
+        </div>
+        <button type="submit">add</button>
+    </form>
+</div>
+<button onclick="goBack()">뒤로가기</button>
+<script>
+    function goBack() {
+        window.location.href = "/"
+    }
+</script>
+</body>

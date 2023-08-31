@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .post_box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $(".post_box").click(function() {
+                var postId = $(this).data("post_id");
+
+                // 페이지 전환을 위해 URL을 생성합니다.
+                var url = "/post?id=" + postId;
+
+                // 생성한 URL로 페이지를 이동합니다.
+                window.location.href = url;
+            });
+        });
+    </script>
+    <meta charset="UTF-8">
+    <title>Notice Board</title>
+</head>
+<body>
+<h1>Notice Board</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Date</th>
+    </tr>
+    <tr th:each="post: ${postList}">
+        <td th:text="${post.id}"></td>
+        <td>
+            <div class="post_box" th:data-post_id="${post.id}">
+                <span th:text="${post.title}"></span>
+            </div>
+        </td>
+        <td th:text="${#dates.format(post.date, 'yyyy-MM-dd')}"></td>
+    </tr>
+</table>
+
+<a href="/add">Add New Post</a>
+
+</body>
+</html>

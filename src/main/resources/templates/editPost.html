@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="container">
+    <form action="/edit" method="post">
+        <input type="hidden" name="id" th:value="${post.id}">
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" th:value="${post.title}">
+        </div>
+        <div class="form-group">
+            <label for="detail">내용</label>
+            <input type="text" id="detail" name="detail" th:value="${post.detail}">
+        </div>
+        <button type="submit">수정</button>
+    </form>
+</div>
+<button onclick="goBack()">뒤로가기</button>
+<script>
+    function goBack() {
+        window.location.href = "/"
+    }
+</script>
+</body>
+</html>

@@ -1,12 +1,14 @@
 package com.example.notice_board.repository;
 
 import com.example.notice_board.domain.Post;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class JpaPostRepository implements PostRepository{
     private final EntityManager em;
 
