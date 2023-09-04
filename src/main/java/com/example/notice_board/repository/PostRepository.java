@@ -1,5 +1,6 @@
 package com.example.notice_board.repository;
 
+import com.example.notice_board.domain.Comment;
 import com.example.notice_board.domain.Post;
 import org.springframework.stereotype.Repository;
 
@@ -18,4 +19,6 @@ public interface PostRepository {
     Optional<Post> findById(Long id);
 
     List<Post> findAll();
+
+    List<Comment> findCommentsByPostId(Long postId);
 }

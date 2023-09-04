@@ -1,5 +1,6 @@
 package com.example.notice_board.repository;
 
+import com.example.notice_board.domain.Comment;
 import com.example.notice_board.domain.Post;
 import org.springframework.stereotype.Repository;
 
@@ -51,5 +52,15 @@ public class JpaPostRepository implements PostRepository{
     public List<Post> findAll() {
         return em.createQuery("select m from Post m", Post.class)
                 .getResultList();
+    }
+
+    @Override
+    public List<Comment> findCommentsByPostId(Long postId) {
+        Post post = em.find(Post.class, postId);
+        if (post != null) {
+            return post.getComments();
+        } else {
+            throw new RuntimeException("Post not found with id: " + postId);
+        }
     }
 }

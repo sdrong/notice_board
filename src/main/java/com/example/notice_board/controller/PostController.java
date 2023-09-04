@@ -1,6 +1,8 @@
 package com.example.notice_board.controller;
 
+import com.example.notice_board.domain.Comment;
 import com.example.notice_board.domain.Post;
+import com.example.notice_board.service.CommentService;
 import com.example.notice_board.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +19,12 @@ import java.util.Optional;
 public class PostController  {
 
     private final PostService postService;
+    private final CommentService commentService;
 
     @Autowired
-    public PostController(PostService postService) {
+    public PostController(PostService postService, CommentService commentService) {
         this.postService = postService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/")
@@ -33,7 +37,6 @@ public class PostController  {
     @GetMapping(value = "/post")
     public String post(Model model, @RequestParam("id") Long id){
         Optional<Post> post = postService.findById(id);
-
         if(post.isPresent()){
             model.addAttribute("post", post.get());
             return "/post";
