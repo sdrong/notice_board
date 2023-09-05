@@ -1,4 +1,4 @@
-package com.example.notice_board.controller;
+package com.example.notice_board.dto;
 
 public class PostForm {
     private String title;

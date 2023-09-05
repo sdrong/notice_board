@@ -1,7 +1,7 @@
 package com.example.notice_board.controller;
 
-import com.example.notice_board.domain.Comment;
 import com.example.notice_board.domain.Post;
+import com.example.notice_board.dto.PostForm;
 import com.example.notice_board.service.CommentService;
 import com.example.notice_board.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +19,10 @@ import java.util.Optional;
 public class PostController  {
 
     private final PostService postService;
-    private final CommentService commentService;
 
     @Autowired
-    public PostController(PostService postService, CommentService commentService) {
+    public PostController(PostService postService) {
         this.postService = postService;
-        this.commentService = commentService;
     }
 
     @GetMapping("/")

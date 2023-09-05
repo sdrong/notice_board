@@ -20,5 +20,4 @@ public interface PostRepository {
 
     List<Post> findAll();
 
-    List<Comment> findCommentsByPostId(Long postId);
 }

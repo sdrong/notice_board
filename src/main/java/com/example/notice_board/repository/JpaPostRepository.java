@@ -53,14 +53,4 @@ public class JpaPostRepository implements PostRepository{
         return em.createQuery("select m from Post m", Post.class)
                 .getResultList();
     }
-
-    @Override
-    public List<Comment> findCommentsByPostId(Long postId) {
-        Post post = em.find(Post.class, postId);
-        if (post != null) {
-            return post.getComments();
-        } else {
-            throw new RuntimeException("Post not found with id: " + postId);
-        }
-    }
 }

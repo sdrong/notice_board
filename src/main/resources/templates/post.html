@@ -35,6 +35,16 @@
             <button type="submit">삭제</button>
         </form>
     </div>
+    <table>
+        <tr th:each="comment: ${comments}">
+            <td th:text="${comment.detail}"></td>
+            <td>
+                <div class="comment_box" th:data-comment_id="${comment.id}">
+                    <span th:text="${comment.detail}"></span>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
 <button onclick="goBack()">뒤로가기</button>
 <script>

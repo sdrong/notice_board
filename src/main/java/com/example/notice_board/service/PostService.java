@@ -1,6 +1,5 @@
 package com.example.notice_board.service;
 
-import com.example.notice_board.domain.Comment;
 import com.example.notice_board.domain.Post;
 import com.example.notice_board.repository.CommentRepository;
 import com.example.notice_board.repository.PostRepository;
@@ -13,11 +12,9 @@ import java.util.Optional;
 @Transactional
 public class PostService {
     private final PostRepository postRepository;
-    private final CommentRepository commentRepository;
 
-    public PostService(PostRepository postRepository, CommentRepository commentRepository) {
+    public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
-        this.commentRepository = commentRepository;
     }
 
     public Post save(Post post){
@@ -50,7 +47,4 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public List<Comment> findAllCommentsByPostId(Long postId){
-        return commentRepository.findByPostId(postId);
-    }
 }
