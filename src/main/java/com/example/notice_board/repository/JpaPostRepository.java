@@ -53,4 +53,11 @@ public class JpaPostRepository implements PostRepository{
         return em.createQuery("select m from Post m", Post.class)
                 .getResultList();
     }
+
+    @Override
+    public List<Comment> findByPostId(Long postId) {
+        return em.createQuery("select c from Comment c where c.post.id = :postId", Comment.class)
+                .setParameter("postId", postId)
+                .getResultList();
+    }
 }
