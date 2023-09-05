@@ -1,7 +1,6 @@
 package com.example.notice_board.service;
 
 import com.example.notice_board.domain.Post;
-import com.example.notice_board.repository.CommentRepository;
 import com.example.notice_board.repository.PostRepository;
 import org.springframework.transaction.annotation.Transactional;
 
