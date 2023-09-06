@@ -10,24 +10,12 @@
             cursor: pointer;
         }
     </style>
-    <script>
-        $(document).ready(function() {
-            $(".post_box").click(function() {
-                var postId = $(this).data("post_id");
 
-                // 페이지 전환을 위해 URL을 생성합니다.
-                var url = "/post?id=" + postId;
-
-                // 생성한 URL로 페이지를 이동합니다.
-                window.location.href = url;
-            });
-        });
-    </script>
     <meta charset="UTF-8">
     <title>Notice Board</title>
 </head>
 <body>
-<h1>Notice Board</h1>
+<h1 id="noticeBoard">Notice Board</h1>
 
 <table>
     <tr>
@@ -47,6 +35,25 @@
 </table>
 
 <a href="/addPost">Add New Post</a>
+<script>
+    // h1 요소에 클릭 이벤트 핸들러 추가
+    document.getElementById("noticeBoard").addEventListener("click", function() {
+        // 홈 화면으로 이동 (예: 홈 페이지 URL을 지정)
+        window.location.href = "/";
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $(".post_box").click(function() {
+            var postId = $(this).data("post_id");
 
+            // 페이지 전환을 위해 URL을 생성합니다.
+            var url = "/post?id=" + postId;
+
+            // 생성한 URL로 페이지를 이동합니다.
+            window.location.href = url;
+        });
+    });
+</script>
 </body>
 </html>

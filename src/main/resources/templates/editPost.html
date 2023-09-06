@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-
+<h1 id="noticeBoard">Notice Board</h1>
 <div class="container">
     <form action="/edit" method="post">
         <input type="hidden" name="id" th:value="${post.id}">
@@ -22,5 +22,13 @@
         window.location.href = "/"
     }
 </script>
+<script>
+    // h1 요소에 클릭 이벤트 핸들러 추가
+    document.getElementById("noticeBoard").addEventListener("click", function() {
+        // 홈 화면으로 이동 (예: 홈 페이지 URL을 지정)
+        window.location.href = "/";
+    });
+</script>
+
 </body>
 </html>

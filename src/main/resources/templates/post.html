@@ -5,23 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script th:inline="javascript">
-        var postId = /*[[${post.id}]]*/ null;
-    </script>
-    <script>
-        $(document).ready(function() {
-            $(".refactore").click(function(event) {
-                event.preventDefault();
-                if (postId !== null) {
-                    var url = "/edit?id=" + encodeURIComponent(postId);
-                    window.location.href = url;
-                }
-            });
-        });
-    </script>
-
 </head>
 <body>
+<h1 id="noticeBoard">Notice Board</h1>
 <div>
     <div th:if="${post != null}">
         <p th:text="'title: ' + ${post.title}"></p>
@@ -47,9 +33,9 @@
         <div class="comment-form">
             <h2>댓글 추가</h2>
             <!-- 포스트 페이지로 리다이렉트하도록 수정한 부분 -->
-            <form th:action="@{/addComment}" method="post">
-                <input type="hidden" name="postId" th:value="${post.id}" />
-                <textarea name="commentText" placeholder="댓글 입력" required></textarea>
+            <form action="/addComment" method="post">
+                <input type="hidden" id="postId" name="postId" th:value="${post.id}" />
+                <textarea type="text" id = detail name="detail" placeholder="댓글 입력" required></textarea>
                 <button type="submit">댓글 달기</button>
             </form>
         </div>
@@ -66,6 +52,27 @@
             window.location.href = returnUrl;
             return false;
         });
+    });
+</script>
+<script th:inline="javascript">
+    var postId = /*[[${post.id}]]*/ null;
+</script>
+<script>
+    $(document).ready(function() {
+        $(".refactore").click(function(event) {
+            event.preventDefault();
+            if (postId !== null) {
+                var url = "/edit?id=" + encodeURIComponent(postId);
+                window.location.href = url;
+            }
+        });
+    });
+</script>
+<script>
+    // h1 요소에 클릭 이벤트 핸들러 추가
+    document.getElementById("noticeBoard").addEventListener("click", function() {
+        // 홈 화면으로 이동 (예: 홈 페이지 URL을 지정)
+        window.location.href = "/";
     });
 </script>
 </body>

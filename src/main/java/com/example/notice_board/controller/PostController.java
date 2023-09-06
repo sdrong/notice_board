@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -62,6 +63,7 @@ public class PostController  {
         return "/newPost";
     }
 
+    @Transactional
     @PostMapping(value = "/addPost")
     public String addPost(PostForm postForm){
         Post post = new Post();

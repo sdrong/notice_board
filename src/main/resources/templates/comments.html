@@ -8,6 +8,7 @@
 </head>
 <body>
 <div>
+    <h1 id="noticeBoard">Notice Board</h1>
     <ul>
         <!-- 댓글 목록을 반복해서 표시합니다. -->
         <th:block th:each="comment : ${comments}">
@@ -20,6 +21,13 @@
     function goBack() {
         window.location.href = "/"
     }
+</script>
+<script>
+    // h1 요소에 클릭 이벤트 핸들러 추가
+    document.getElementById("noticeBoard").addEventListener("click", function() {
+        // 홈 화면으로 이동 (예: 홈 페이지 URL을 지정)
+        window.location.href = "/";
+    });
 </script>
 </body>
 </html>
